@@ -30,16 +30,43 @@ function generateProfile($faker)
 
     return $profile;
 };
+$numProfiles = isset($_GET['number']) ? (int)$_GET['number'] : 3;
+
 $profiles = [];
-for ($i = 0; $i < 3; $i++) {
+for ($i = 0; $i < $numProfiles; $i++) {
     $profiles[] = generateProfile($faker);
 }
-foreach ($profiles as $profile) {
-    echo "Full Name: " . $profile['full_name'] . "\n";
-    echo "Email: " . $profile['email'] . "\n";
-    echo "Phone Number: " . $profile['phone_number'] . "\n";
-    echo "Address: " . $profile['address'] . "\n";
-    echo "Birthdate: " . $profile['birthdate'] . "\n";
-    echo "Job Title: " . $profile['job_title'] . "\n";
-    echo "--------------------------\n";
-}
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PROFILE GENERATOR</title>
+</head>
+
+<body>
+    <form action="index.php">
+        <label for="number">Enter the number of profile that you want to generate</label>
+        <input type="number" name="number" min="1" max="100" value="<?php echo $numProfiles; ?>" />
+        <input type="submit" value="generate" />
+    </form>
+    <div class="profiles">
+        <?php
+        foreach ($profiles as $profile) {
+            echo '<div class="profile">';
+            echo '<h3>' . $profile['full_name'] . '</h3>';
+            echo '<p><strong>Email:</strong> ' . $profile['email'] . '</p>';
+            echo '<p><strong>Phone Number:</strong> ' . $profile['phone_number'] . '</p>';
+            echo '<p><strong>Address:</strong> ' . $profile['address'] . '</p>';
+            echo '<p><strong>Birthdate:</strong> ' . $profile['birthdate'] . '</p>';
+            echo '<p><strong>Job Title:</strong> ' . $profile['job_title'] . '</p>';
+            echo '</div>';
+        }
+        ?>
+    </div>
+</body>
+
+</html>
