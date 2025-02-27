@@ -18,3 +18,7 @@ function generateProfile($faker)
 
     return $profile;
 };
+$profiles = [];
+for ($i = 0; $i < 10; $i++) {
+    $profiles[] = generateProfile($faker);
+}
