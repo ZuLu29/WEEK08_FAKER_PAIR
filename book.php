@@ -1,5 +1,5 @@
 <?php
-require ('vendor/autoload.php');
+require('vendor/autoload.php');
 $faker = Faker\Factory::create('en_PH');
 
 $genres = ['Fiction', 'Mystery', 'Science Fiction', 'Fantasy', 'Romance', 'Thriller', 'Historical', 'Horror'];
@@ -10,7 +10,7 @@ for ($i = 0; $i < 15; $i++) {
     $books[] = [
         'title' => $faker->sentence(3),
         'author' => $faker->name,
-        'genre' => $genres[randomElement($genres)],
+        'genre' => $genres[array_rand($genres)],
         'publication_year' => rand(1900, 2024),
         'isbn' => $faker->isbn13,
         'summary' => $faker->paragraph,
@@ -20,6 +20,7 @@ for ($i = 0; $i < 15; $i++) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +29,7 @@ for ($i = 0; $i < 15; $i++) {
 </head>
 
 <body>
-    
+
     <h1>Books</h1>
     <table>
         <thead>
@@ -54,7 +55,7 @@ for ($i = 0; $i < 15; $i++) {
             <?php endforeach; ?>
         </tbody>
     </table>
-      
-</body>
-</html>
 
+</body>
+
+</html>
