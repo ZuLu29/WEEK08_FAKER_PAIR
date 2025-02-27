@@ -41,11 +41,49 @@ for ($i = 0; $i < 10; $i++) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>User Account</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        table {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 
 <body>
-
+    <div class="container">
+        <h1 class="text-center my-4">User Accounts Table</h1>
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>User ID</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>Password (SHA-256)</th>
+                    <th>Account Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                foreach ($userAccounts as $user) {
+                    echo '<tr>';
+                    echo '<td>' . $user['user_id'] . '</td>';
+                    echo '<td>' . $user['full_name'] . '</td>';
+                    echo '<td>' . $user['email'] . '</td>';
+                    echo '<td>' . $user['username'] . '</td>';
+                    echo '<td>' . $user['password'] . '</td>';
+                    echo '<td>' . $user['account_created'] . '</td>';
+                    echo '</tr>';
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 
 </html>
