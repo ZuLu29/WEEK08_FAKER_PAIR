@@ -1,6 +1,6 @@
 <?php
 require('vendor/autoload.php');
-$faker = Faker\Factory::create('en_PH');
+$faker = Faker\Factory::create();
 
 $genres = ['Fiction', 'Mystery', 'Science Fiction', 'Fantasy', 'Romance', 'Thriller', 'Historical', 'Horror'];
 
@@ -10,7 +10,7 @@ for ($i = 0; $i < 15; $i++) {
     $books[] = [
         'title' => $faker->sentence(3),
         'author' => $faker->name,
-        'genre' => $genres[array_rand($genres)],
+        'genre' => $faker->randonElement($genres),
         'publication_year' => rand(1900, 2024),
         'isbn' => $faker->isbn13,
         'summary' => $faker->paragraph,

@@ -29,3 +29,7 @@ function generateUserAccount($faker)
         'account_created' => $accountCreated,
     ];
 };
+$userAccounts = [];
+for ($i = 0; $i < 10; $i++) {
+    $userAccounts[] = generateUserAccount($faker);
+}
