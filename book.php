@@ -10,7 +10,7 @@ for ($i = 0; $i < 15; $i++) {
     $books[] = [
         'title' => $faker->sentence(3),
         'author' => $faker->name,
-        'genre' => $genres[randomElement($genres)],
+        'genre' => $faker->randomElement($genres),
         'publication_year' => rand(1900, 2024),
         'isbn' => $faker->isbn13,
         'summary' => $faker->paragraph,
@@ -28,7 +28,7 @@ for ($i = 0; $i < 15; $i++) {
 </head>
 
 <body>
-    
+
 <div class="container mt-5">
     <h1 class="mb-4">Books</h1>
     <table class="table table-bordered">
