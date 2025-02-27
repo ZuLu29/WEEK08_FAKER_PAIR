@@ -2,21 +2,6 @@
 require ('vendor/autoload.php');
 $faker = Faker\Factory::create('en_PH');
 
-$genres = ['Fiction', 'Mystery', 'Science Fiction', 'Fantasy', 'Romance', 'Thriller', 'Historical', 'Horror'];
-
-$books = [];
-
-for ($i = 0; $i < 15; $i++) {
-    $books[] = [
-        'title' => $faker->sentence(3),
-        'author' => $faker->name,
-        'genre' => $faker->randomElement($genres),
-        'publication_year' => rand(1900, 2024),
-        'isbn' => $faker->isbn13,
-        'summary' => $faker->paragraph,
-    ];
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,16 +28,16 @@ for ($i = 0; $i < 15; $i++) {
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($books as $book): ?>
+            <?php for ($i=1; $i<=10; $i++) ?>
                 <tr>
-                    <td><?php echo htmlspecialchars($book['title']); ?></td>
-                    <td><?php echo htmlspecialchars($book['author']); ?></td>
-                    <td><?php echo htmlspecialchars($book['genre']); ?></td>
-                    <td><?php echo htmlspecialchars($book['publication_year']); ?></td>
-                    <td><?php echo htmlspecialchars($book['isbn']); ?></td>
-                    <td><?php echo htmlspecialchars($book['summary']); ?></td>
+                    <td><?php echo htmlspecialchars($faker->uuid()); ?></td>
+                    <td><?php echo htmlspecialchars($faker->name); ?></td>
+                    <td><?php echo htmlspecialchars($faker->email); ?></td>
+                    <td><?php echo htmlspecialchars(explode('@', $faker->)[0]); ?></td>
+                    <td><?php echo htmlspecialchars($faker->sha256()); ?></td>
+                    <td><?php echo htmlspecialchars($faker->dateTimeBetween('-2years', 'now')->format('Y-m-d')); ?></td>
                 </tr>
-            <?php endforeach; ?>
+            <?php endfor; ?>
         </tbody>
     </table>
 </div>
