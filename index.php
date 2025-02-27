@@ -19,6 +19,15 @@ function generateProfile($faker)
     return $profile;
 };
 $profiles = [];
-for ($i = 0; $i < 10; $i++) {
+for ($i = 0; $i < 3; $i++) {
     $profiles[] = generateProfile($faker);
+}
+foreach ($profiles as $profile) {
+    echo "Full Name: " . $profile['full_name'] . "\n";
+    echo "Email: " . $profile['email'] . "\n";
+    echo "Phone Number: " . $profile['phone_number'] . "\n";
+    echo "Address: " . $profile['address'] . "\n";
+    echo "Birthdate: " . $profile['birthdate'] . "\n";
+    echo "Job Title: " . $profile['job_title'] . "\n";
+    echo "--------------------------\n";
 }
