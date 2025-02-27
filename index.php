@@ -45,28 +45,58 @@ for ($i = 0; $i < $numProfiles; $i++) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PROFILE GENERATOR</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        .profile-card {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 
 <body>
-    <form action="index.php">
-        <label for="number">Enter the number of profile that you want to generate</label>
-        <input type="number" name="number" min="1" max="100" value="<?php echo $numProfiles; ?>" />
-        <input type="submit" value="generate" />
-    </form>
-    <div class="profiles">
-        <?php
-        foreach ($profiles as $profile) {
-            echo '<div class="profile">';
-            echo '<h3>' . $profile['full_name'] . '</h3>';
-            echo '<p><strong>Email:</strong> ' . $profile['email'] . '</p>';
-            echo '<p><strong>Phone Number:</strong> ' . $profile['phone_number'] . '</p>';
-            echo '<p><strong>Address:</strong> ' . $profile['address'] . '</p>';
-            echo '<p><strong>Birthdate:</strong> ' . $profile['birthdate'] . '</p>';
-            echo '<p><strong>Job Title:</strong> ' . $profile['job_title'] . '</p>';
-            echo '</div>';
-        }
-        ?>
+    <div class="container">
+        <h1 class="text-center my-4">Profile Generator</h1>
+        <form action="index.php" method="GET" class="mb-4">
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="number" class="col-form-label">Enter the number of profiles to generate:</label>
+                </div>
+                <div class="col-auto">
+                    <input type="number" name="number" class="form-control" min="1" max="100" value="<?php echo $numProfiles; ?>" />
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Generate</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="row">
+            <?php
+            foreach ($profiles as $profile) {
+                echo '<div class="col-md-4 profile-card">';
+                echo '<div class="card">';
+                echo '<div class="card-body">';
+                echo '<h5 class="card-title">' . $profile['full_name'] . '</h5>';
+                echo '<p class="card-text"><strong>Email:</strong> ' . $profile['email'] . '</p>';
+                echo '<p class="card-text"><strong>Phone Number:</strong> ' . $profile['phone_number'] . '</p>';
+                echo '<p class="card-text"><strong>Address:</strong> ' . $profile['address'] . '</p>';
+                echo '<p class="card-text"><strong>Birthdate:</strong> ' . $profile['birthdate'] . '</p>';
+                echo '<p class="card-text"><strong>Job Title:</strong> ' . $profile['job_title'] . '</p>';
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+            }
+            ?>
+        </div>
     </div>
+
+    <!-- Bootstrap JS (Optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
